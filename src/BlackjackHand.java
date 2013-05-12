@@ -5,24 +5,23 @@
  */
 public class BlackjackHand
 {
-    // Player cards
-    private Card[] hand;
-
-    // Numeric value of hand
-    int handValue;
-
-    // Number of cards in hand
-    int numCards;
+    //------------------------------------------------------------------------
+    // Data members:
+    private Card[] hand; // Player cards
+    int handValue;       // Numeric value of hand
+    int numCards;        // Number of cards in hand
+    boolean bustStatus;  // If true, hand is over 21 and is a bust
 
     //------------------------------------------------------------------------
     // Default constructor
     BlackjackHand()
     {
-	hand      = new Card[10]; // Set size of hand array
-	hand[0]   = new Card();   // Initialize first two cards
-	hand[1]   = new Card();
-	numCards  = 2;            // Set to two cards initially
-	handValue = 0;            // Set total value of hand to zero
+	hand       = new Card[10]; // Set size of hand array
+	hand[0]    = new Card();   // Initialize first two cards
+	hand[1]    = new Card();
+	numCards   = 2;            // Set to two cards initially
+	handValue  = 0;            // Set total value of hand to zero
+	bustStatus = false;
     }
 
     //------------------------------------------------------------------------
@@ -34,6 +33,7 @@ public class BlackjackHand
 	handValue = 0;   // Reset value of hand
 	numCards = 2;    // Reset number of cards
 	findHandValue(); // Determine value of cards
+	bustStatus = false;
     }
 
     //------------------------------------------------------------------------
@@ -90,7 +90,18 @@ public class BlackjackHand
     //------------------------------------------------------------------------
     public String toString()
     {
-	return String.valueOf(handValue);
+	String message = "";
+
+	for (int i = 0; i < numCards; i++)
+	{
+	    message += hand[i].toString() + ", ";
+	}
+
+	message += String.valueOf(handValue);
+
+	return message;
     }
+
+    //------------------------------------------------------------------------
 
 }// End BlackjackHand class
