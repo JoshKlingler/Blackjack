@@ -3,7 +3,7 @@
  * by the DealerHand and PlayerHand classes.
  * @author Josh
  */
-public class BlackjackHand
+public class Hand
 {
     //------------------------------------------------------------------------
     // Data members:
@@ -14,7 +14,7 @@ public class BlackjackHand
 
     //------------------------------------------------------------------------
     // Default constructor
-    BlackjackHand()
+    Hand()
     {
 	hand       = new Card[10]; // Set size of hand array
 	hand[0]    = new Card();   // Initialize first two cards
@@ -83,11 +83,17 @@ public class BlackjackHand
 		    handValue -= 10;           // Set ace to 1 instead of 11
 		}
 	    }
+
+	    if (handValue > 21) // If hand is still over 21 after checking for aces, it is a bust
+	    {
+		bustStatus = true;
+	    }
 	}
 
     }// End findHandValue method
 
     //------------------------------------------------------------------------
+    // Writes suit/value of cards and total hand value
     public String toString()
     {
 	String message = "";
@@ -101,7 +107,6 @@ public class BlackjackHand
 
 	return message;
     }
-
     //------------------------------------------------------------------------
 
 }// End BlackjackHand class

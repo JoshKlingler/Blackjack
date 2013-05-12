@@ -3,7 +3,7 @@
  * @author Josh
  */
 
-public class DealerHand extends BlackjackHand
+public class DealerHand extends Hand
 {
     //------------------------------------------------------------------------
     // If count is 16 or below, dealer must hit. Otherwise they stay.

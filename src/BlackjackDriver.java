@@ -12,7 +12,7 @@ public class BlackjackDriver
     public static void main(String[] args)
     {
 	Deck test = new Deck();
-	BlackjackHand handTest = new BlackjackHand();
+	Hand handTest = new Hand();
 	handTest.drawHand(new Card(1, Card.Suit.SPADE), new Card(1, Card.Suit.DIAMOND));
 	handTest.hit( new Card(1, Card.Suit.CLUB) );
 	System.out.println(handTest);
