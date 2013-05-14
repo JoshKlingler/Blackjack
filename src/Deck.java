@@ -71,7 +71,7 @@ public class Deck
     //----------------------------SplitDeck----------------------------------
     // Splits deck in two using a random number between 22 and 27. Returns
     // split array when completed
-    public Card[] SplitDeck()
+    private Card[] SplitDeck()
     {
 	// Random number generator
 	Random splitIndexGenerator = new Random();
@@ -106,7 +106,7 @@ public class Deck
     //----------------------------CombineDecks---------------------------------
     // Combines decks back together, alternating between the top card
     // of each of the two decks.
-    public Card[] CombineDecks(Card[] firstHalfDeck, Card[] secondHalfDeck, int splitIndex)
+    private Card[] CombineDecks(Card[] firstHalfDeck, Card[] secondHalfDeck, int splitIndex)
     {
 	// Counters to keep track of current index of smaller decks
 	int firstDeckCounter  = 0,

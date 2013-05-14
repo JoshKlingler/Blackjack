@@ -7,7 +7,7 @@ public class DealerHand extends Hand
 {
     //------------------------------------------------------------------------
     // If count is 16 or below, dealer must hit. Otherwise they stay.
-    public boolean checkHit()
+    public boolean needsHit()
     {
 	if (handValue <= 16)
 	{

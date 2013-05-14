@@ -11,11 +11,10 @@ public class BlackjackDriver
 {
     public static void main(String[] args)
     {
-	Deck test = new Deck();
-	Hand handTest = new Hand();
-	handTest.drawHand(new Card(1, Card.Suit.SPADE), new Card(1, Card.Suit.DIAMOND));
-	handTest.hit( new Card(1, Card.Suit.CLUB) );
-	System.out.println(handTest);
+	BlackjackGame test = new BlackjackGame();
+	test.dealCards();
+	test.dealerHit();
+	System.out.println(test.dealer.toString());
 
     }
 }
