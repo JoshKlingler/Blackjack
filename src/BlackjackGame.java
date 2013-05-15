@@ -43,4 +43,22 @@ public class BlackjackGame
 	}
     }
 
+    //------------------------------------------------------------------------
+    // Player adds a card to their hand
+    public void playerHit()
+    {
+	player.hit( deck.drawCard() );
+    }
+
+    //------------------------------------------------------------------------
+    // toString method for testing
+    public String toString()
+    {
+	String message = "";
+	message +="Dealer: " + dealer + "\n"
+		+ "Player: " + player;
+
+	return message;
+    }
+
 }

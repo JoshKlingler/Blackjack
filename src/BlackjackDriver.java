@@ -13,9 +13,7 @@ public class BlackjackDriver
     {
 	BlackjackGame test = new BlackjackGame();
 	test.dealCards();
-	test.dealerHit();
-	System.out.println(test.dealer.toString());
-
+	System.out.println(test);
     }
 }
 
