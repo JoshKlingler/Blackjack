@@ -11,7 +11,8 @@ public class BlackjackDriver
 {
     public static void main(String[] args)
     {
-	testGame();
+	//testGame();
+	BlackjackGUI test = new BlackjackGUI();
     }
 
     public static void testGame()
