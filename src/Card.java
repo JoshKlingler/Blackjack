@@ -56,5 +56,12 @@ public class Card
 	return value;
     }
 
+    //------------------------------------------------------------------------
+    // Get method for suit
+    public Suit getSuit()
+    {
+	return thisSuit;
+    }
+
 
 }
