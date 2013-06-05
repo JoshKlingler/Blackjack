@@ -7,7 +7,7 @@ public class Hand
 {
     //------------------------------------------------------------------------
     // Data members:
-    private Card[] hand; // Player cards
+    public Card[] hand; // Player cards
     int handValue;       // Numeric value of hand
     int numCards;        // Number of cards in hand
     boolean bustStatus;  // If true, hand is over 21 and is a bust
@@ -19,7 +19,7 @@ public class Hand
 	hand       = new Card[10]; // Set size of hand array
 	hand[0]    = new Card();   // Initialize first two cards
 	hand[1]    = new Card();
-	numCards   = 2;            // Set to two cards initially
+	numCards   = 2;            // Set number of cards to two cards initially
 	handValue  = 0;            // Set total value of hand to zero
 	bustStatus = false;
     }
@@ -106,6 +106,12 @@ public class Hand
 	message += String.valueOf(handValue);
 
 	return message;
+    }
+    //------------------------------------------------------------------------
+    // Returns number of cards in hand
+    public int getNumCards()
+    {
+	return numCards;
     }
     //------------------------------------------------------------------------
 

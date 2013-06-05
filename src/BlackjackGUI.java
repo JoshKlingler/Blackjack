@@ -21,7 +21,7 @@ public class BlackjackGUI extends JFrame
     public BlackjackGUI() // Default constructor
     {
 	JFrame window = new JFrame();
-	window.setSize(800, 600);
+	window.setSize(1000, 700);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setTitle("Blackjack");
 	window.setLayout( new BorderLayout() );

@@ -7,9 +7,9 @@ public class DrawPanel extends JPanel
 {
     //------------------------------------------------------------------------
     Image cardImage;  // Image containing all 52 cards
+    Graphics g;
     //------------------------------------------------------------------------
-
-    // Constructor
+    // Default constructor
     public DrawPanel()
     {
 	setBackground(Color.GREEN);
@@ -24,20 +24,24 @@ public class DrawPanel extends JPanel
 	ClassLoader cl = DrawPanel.class.getClassLoader();
 	URL imageURL = cl.getResource("cards.png");
 	if (imageURL != null){
-            cardImage = Toolkit.getDefaultToolkit().createImage(imageURL);}
+            cardImage = Toolkit.getDefaultToolkit().createImage(imageURL);
+	}
     }
     //------------------------------------------------------------------------
     public void paintComponent(Graphics g)
     {
 	super.paintComponent(g);
-	if (cardImage == null)
-	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);
-	drawCardImage(g, new Card(), 600, 50);
+	if (cardImage == null){
+	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);}
+	
     }
     //------------------------------------------------------------------------
-    // Given card object, crops corresponding card from image of all 52 cards
-    // Obtained from: http://math.hws.edu/javanotes/c13/s1.html
-    public void drawCardImage(Graphics g, Card card, int x, int y) {
+    /*
+     * Given card object, crops corresponding card from image of all 52 cards
+     * and displays at given x/y coordinate on the panel.
+     * Obtained from: http://math.hws.edu/javanotes/c13/s1.html
+    */
+    private void displayCardImage(Graphics g, Card card, int x, int y) {
          int cx;    // x-coord of upper left corner of the card inside cardsImage
          int cy;    // y-coord of upper left corner of the card inside cardsImage
          if (card == null) {
@@ -65,4 +69,15 @@ public class DrawPanel extends JPanel
          g.drawImage(cardImage,x,y,x+79,y+123,cx,cy,cx+79,cy+123,this);
       }
     //------------------------------------------------------------------------
+    // Receives player's hand as paramter and displays card images on the bottom
+    // portion of the panel.
+    public void displayPlayerHand(Hand thisHand)
+    {
+	for (int i = 0; i < thisHand.getNumCards(); i++)
+	{
+	    displayCardImage(g, thisHand.hand[i], i + 250, 500);
+	}
+    }
+    //------------------------------------------------------------------------
+
 }
