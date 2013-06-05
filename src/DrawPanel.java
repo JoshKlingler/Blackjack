@@ -75,7 +75,7 @@ public class DrawPanel extends JPanel
     {
 	for (int i = 0; i < thisHand.getNumCards(); i++)
 	{
-	    displayCardImage(g, thisHand.hand[i], i + 250, 500);
+	    displayCardImage(g, thisHand.hand[i], (50*i) + 250, 500);
 	}
     }
     //------------------------------------------------------------------------
