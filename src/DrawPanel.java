@@ -28,11 +28,12 @@ public class DrawPanel extends JPanel
 	}
     }
     //------------------------------------------------------------------------
-    public void paintComponent(Graphics g)
+    protected void paintComponent(Graphics g)
     {
 	super.paintComponent(g);
 	if (cardImage == null){
 	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);}
+	
 	
     }
     //------------------------------------------------------------------------
@@ -73,9 +74,12 @@ public class DrawPanel extends JPanel
     // portion of the panel.
     public void displayPlayerHand(Hand thisHand)
     {
+	displayCardImage(g, new Card(), 50, 50);
+	
+
 	for (int i = 0; i < thisHand.getNumCards(); i++)
 	{
-	    displayCardImage(g, thisHand.hand[i], (50*i) + 250, 500);
+	    //displayCardImage(g, thisHand.hand[i], (50*i) + 250, 500);
 	}
     }
     //------------------------------------------------------------------------

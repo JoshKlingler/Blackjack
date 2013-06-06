@@ -15,6 +15,12 @@ public class BlackjackGUI extends JFrame
     private JButton stayButton = new JButton("Stay");
     private JButton splitButton= new JButton("Split");
 
+    // Listener for buttons
+    private buttonListener listener = new buttonListener();
+
+    // Handles all behind-the-scenes work for game
+    BlackjackGame game = new BlackjackGame();
+
     // Panels for card graphics
     DrawPanel cardArea   = new DrawPanel();
     JPanel    buttonArea = new JPanel();
@@ -22,7 +28,8 @@ public class BlackjackGUI extends JFrame
     // Window to diplay rest of components
     JFrame window = new JFrame();
     //------------------------------------------------------------------------
-    public BlackjackGUI() // Default constructor
+    // Default constructor
+    public BlackjackGUI()
     {
 	setWindowSettings();
 	setButtonSettings();
@@ -43,6 +50,11 @@ public class BlackjackGUI extends JFrame
 	stayButton.setEnabled(false);
 	splitButton.setEnabled(false);
 
+	dealButton.addActionListener(listener);
+	hitButton.addActionListener(listener);
+	stayButton.addActionListener(listener);
+	splitButton.addActionListener(listener);
+
 	buttonArea.add(dealButton);
 	buttonArea.add(hitButton);
 	buttonArea.add(stayButton);
@@ -56,4 +68,16 @@ public class BlackjackGUI extends JFrame
 	window.setVisible(true);
     }
     //------------------------------------------------------------------------
+    // Nested class for button handling
+    private class buttonListener implements ActionListener
+    {
+	public void actionPerformed(ActionEvent buttonClick)
+	{
+	    if (buttonClick.getSource() == dealButton)
+	    {
+		//game.dealCards();
+		cardArea.displayPlayerHand(game.player);
+	    }
+	}
+    }
 }

@@ -30,6 +30,8 @@ public class BlackjackGame
 
 	    player.drawHand( deck.drawCard(), deck.drawCard() );
 	    dealer.drawHand( deck.drawCard(), deck.drawCard() );
+
+
 	}
     }
 
