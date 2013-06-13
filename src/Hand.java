@@ -8,10 +8,10 @@ public class Hand
     //------------------------------------------------------------------------
     // Data members:
     public Card[] hand;  // Player cards
-    int handValue;       // Numeric value of hand
-    int numCards;        // Number of cards in hand
-    boolean bustStatus;  // If true, hand is over 21 and is a bust
-    boolean splittable;   // If two cards have same value, hand is splittable.
+    protected int handValue;       // Numeric value of hand
+    protected int numCards;        // Number of cards in hand
+    protected boolean bustStatus;  // If true, hand is over 21 and is a bust
+    protected boolean splittable;   // If two cards have same value, hand is splittable.
 
     //------------------------------------------------------------------------
     // Default constructor
@@ -56,6 +56,11 @@ public class Hand
     public boolean getSplitStatus()
     {
 	return splittable;
+    }
+    //------------------------------------------------------------------------
+    public boolean getBustStatus()
+    {
+	return bustStatus;
     }
 
     //------------------------------------------------------------------------

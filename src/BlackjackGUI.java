@@ -78,13 +78,13 @@ public class BlackjackGUI extends JFrame
     // and the others are not.
     private void checkButtonStatus()
     {
-	if ( cardArea.game.getHandDealt() )
+	if ( cardArea.game.getHandDealt() && !game.player.getBustStatus() )
 	{
 	    dealButton.setEnabled(false);
 	    hitButton.setEnabled(true);
 	    stayButton.setEnabled(true);
 	}
-	else
+	else // If hand is not dealt
 	{
 	    dealButton.setEnabled(true);
 	    hitButton.setEnabled(false);
@@ -100,9 +100,6 @@ public class BlackjackGUI extends JFrame
 	    if (buttonClick.getSource() == dealButton)
 	    {
 		cardArea.game.dealCards();
-//		dealButton.setEnabled(false);
-//		hitButton.setEnabled(true);
-//		stayButton.setEnabled(true);
 	    }
 	    if (buttonClick.getSource() == hitButton)
 	    {
@@ -110,6 +107,7 @@ public class BlackjackGUI extends JFrame
 	    }
 	    if (buttonClick.getSource() == stayButton)
 	    {
+		cardArea.game.setPlayerStay(true);
 		cardArea.game.dealerHit();
 	    }
 	    checkButtonStatus();

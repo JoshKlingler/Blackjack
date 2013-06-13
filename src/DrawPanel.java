@@ -36,7 +36,10 @@ public class DrawPanel extends JPanel
 	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);}
 
 	displayPlayerHand(g);
-	displayDealerHand(g);
+	if (game.getHandDealt() && !game.getPlayerStay() ){
+		displayDealerHiddenHand(g);}
+	else{
+	    displayDealerHand(g);}
     }
     //------------------------------------------------------------------------
     /*
@@ -88,6 +91,14 @@ public class DrawPanel extends JPanel
 	{
 	    displayCardImage(g, game.dealer.hand[i], (80*i) + 450, 50);
 	}
+    }
+    //------------------------------------------------------------------------
+    // For initial hand. Player can only see one the first card in the dealer's
+    // hand. The other card is flipped over.
+    public void displayDealerHiddenHand(Graphics g)
+    {
+	displayCardImage(g, game.dealer.hand[1], 450, 50);
+	displayCardImage(g, null, 530, 50);
     }
 
 }

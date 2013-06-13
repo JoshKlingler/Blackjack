@@ -10,6 +10,7 @@ public class BlackjackGame
     public Hand player;         // Player's hand
     private Deck deck;          // Deck of cards
     private boolean handDealt;  // If true, hand is in progress
+    private boolean playerStay; // If true, player has chosen to stay
 
     //------------------------------------------------------------------------
     // Default constructor
@@ -19,6 +20,7 @@ public class BlackjackGame
 	player = new Hand();
 	deck   = new Deck();
 	handDealt = false;
+	playerStay = false;
     }
     //------------------------------------------------------------------------
     // Deals two cards to the dealer and the player.
@@ -32,6 +34,7 @@ public class BlackjackGame
 	    dealer.drawHand( deck.drawCard(), deck.drawCard() );
 
 	    handDealt = true;
+	    playerStay = false;
 	}
 
     }
@@ -40,6 +43,16 @@ public class BlackjackGame
     public boolean getHandDealt()
     {
 	return handDealt;
+    }
+    //------------------------------------------------------------------------
+    public boolean getPlayerStay()
+    {
+	return playerStay;
+    }
+    //------------------------------------------------------------------------
+    public void setPlayerStay(boolean stay)
+    {
+	playerStay = stay;
     }
 
     //------------------------------------------------------------------------
