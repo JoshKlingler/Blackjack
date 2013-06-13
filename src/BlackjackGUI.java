@@ -72,6 +72,26 @@ public class BlackjackGUI extends JFrame
 	window.setVisible(true);
     }
     //------------------------------------------------------------------------
+    // Toggles whether buttons on GUI can be clicked or not. If a hand has
+    // already been dealt, the deal button is not clickable and the hit and stay
+    // buttons can be clicked. If the player stays, the deal button is clickable
+    // and the others are not.
+    private void checkButtonStatus()
+    {
+	if ( cardArea.game.getHandDealt() )
+	{
+	    dealButton.setEnabled(false);
+	    hitButton.setEnabled(true);
+	    stayButton.setEnabled(true);
+	}
+	else
+	{
+	    dealButton.setEnabled(true);
+	    hitButton.setEnabled(false);
+	    stayButton.setEnabled(false);
+	}
+    }
+    //------------------------------------------------------------------------
     // Nested class for button handling
     private class buttonListener implements ActionListener
     {
@@ -80,9 +100,9 @@ public class BlackjackGUI extends JFrame
 	    if (buttonClick.getSource() == dealButton)
 	    {
 		cardArea.game.dealCards();
-		dealButton.setEnabled(false);
-		hitButton.setEnabled(true);
-		stayButton.setEnabled(true);
+//		dealButton.setEnabled(false);
+//		hitButton.setEnabled(true);
+//		stayButton.setEnabled(true);
 	    }
 	    if (buttonClick.getSource() == hitButton)
 	    {
@@ -92,7 +112,7 @@ public class BlackjackGUI extends JFrame
 	    {
 		cardArea.game.dealerHit();
 	    }
-
+	    checkButtonStatus();
 	    cardArea.repaint();
 	}
     }

@@ -35,6 +35,12 @@ public class BlackjackGame
 	}
 
     }
+    //------------------------------------------------------------------------
+    // Returns status of handDealt
+    public boolean getHandDealt()
+    {
+	return handDealt;
+    }
 
     //------------------------------------------------------------------------
     // Dealer draws cards until they either bust or are greater than 16
