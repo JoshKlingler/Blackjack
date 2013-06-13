@@ -7,33 +7,55 @@ public class Hand
 {
     //------------------------------------------------------------------------
     // Data members:
-    public Card[] hand; // Player cards
+    public Card[] hand;  // Player cards
     int handValue;       // Numeric value of hand
     int numCards;        // Number of cards in hand
     boolean bustStatus;  // If true, hand is over 21 and is a bust
+    boolean splittable;   // If two cards have same value, hand is splittable.
 
     //------------------------------------------------------------------------
     // Default constructor
     Hand()
     {
-	hand       = new Card[10]; // Set size of hand array
+	hand       = new Card[20]; // Set size of hand array
 	hand[0]    = new Card();   // Initialize first two cards
 	hand[1]    = new Card();
 	numCards   = 2;            // Set number of cards to two cards initially
 	handValue  = 0;            // Set total value of hand to zero
 	bustStatus = false;
+	splittable = false;
     }
 
     //------------------------------------------------------------------------
     // Receives two cards from deck and resets hand
     public void drawHand(Card c1, Card c2)
     {
-	hand[0] = c1;    // Draw card 1
-	hand[1] = c2;    // Draw card 2
-	handValue = 0;   // Reset value of hand
-	numCards = 2;    // Reset number of cards
-	findHandValue(); // Determine value of cards
-	bustStatus = false;
+	hand[0] = c1;       // Draw card 1
+	hand[1] = c2;       // Draw card 2
+	handValue = 0;      // Reset value of hand
+	numCards = 2;       // Reset number of cards
+	findHandValue();    // Determine value of cards
+	bustStatus = false; // Reset bust checker
+	checkSplittable();  // See if new hand can be split
+
+    }
+    //------------------------------------------------------------------------
+    // Checks if hand can be split. If the first two cards dealt to the player
+    // are of the same value, the hand can be split.
+    private void checkSplittable()
+    {
+	if (hand[0].getValue() == hand[1].getValue()){
+	    splittable = true;
+	}
+	else{
+	    splittable = false;
+	}
+    }
+
+    //------------------------------------------------------------------------
+    public boolean getSplitStatus()
+    {
+	return splittable;
     }
 
     //------------------------------------------------------------------------

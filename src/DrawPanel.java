@@ -6,8 +6,9 @@ import java.net.URL;
 public class DrawPanel extends JPanel
 {
     //------------------------------------------------------------------------
-    Image cardImage;  // Image containing all 52 cards
-    Graphics g;
+    private Image cardImage;  // Image containing all 52 cards
+    public Graphics g;
+    public BlackjackGame game = new BlackjackGame();
     //------------------------------------------------------------------------
     // Default constructor
     public DrawPanel()
@@ -33,8 +34,9 @@ public class DrawPanel extends JPanel
 	super.paintComponent(g);
 	if (cardImage == null){
 	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);}
-	
-	
+
+	displayPlayerHand(g);
+	displayDealerHand(g);
     }
     //------------------------------------------------------------------------
     /*
@@ -72,16 +74,20 @@ public class DrawPanel extends JPanel
     //------------------------------------------------------------------------
     // Receives player's hand as paramter and displays card images on the bottom
     // portion of the panel.
-    public void displayPlayerHand(Hand thisHand)
+    public void displayPlayerHand(Graphics g)
     {
-	displayCardImage(g, new Card(), 50, 50);
-	
-
-	for (int i = 0; i < thisHand.getNumCards(); i++)
+	for (int i = 0; i < game.player.getNumCards(); i++)
 	{
-	    //displayCardImage(g, thisHand.hand[i], (50*i) + 250, 500);
+	    displayCardImage(g, game.player.hand[i], (80*i) + 450, 450);
 	}
     }
     //------------------------------------------------------------------------
+    public void displayDealerHand(Graphics g)
+    {
+	for (int i = 0; i < game.dealer.getNumCards(); i++)
+	{
+	    displayCardImage(g, game.dealer.hand[i], (80*i) + 450, 50);
+	}
+    }
 
 }

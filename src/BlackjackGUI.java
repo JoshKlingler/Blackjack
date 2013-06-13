@@ -38,7 +38,11 @@ public class BlackjackGUI extends JFrame
     //------------------------------------------------------------------------
     private void setWindowSettings()
     {
-	window.setSize(1000, 700);
+	// Gets current screen size and sizes window accordingly
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+
+	window.setSize(1000,700);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setTitle("Blackjack");
 	window.setLayout( new BorderLayout() );
@@ -75,9 +79,21 @@ public class BlackjackGUI extends JFrame
 	{
 	    if (buttonClick.getSource() == dealButton)
 	    {
-		//game.dealCards();
-		cardArea.displayPlayerHand(game.player);
+		cardArea.game.dealCards();
+		dealButton.setEnabled(false);
+		hitButton.setEnabled(true);
+		stayButton.setEnabled(true);
 	    }
+	    if (buttonClick.getSource() == hitButton)
+	    {
+		cardArea.game.playerHit();
+	    }
+	    if (buttonClick.getSource() == stayButton)
+	    {
+		cardArea.game.dealerHit();
+	    }
+
+	    cardArea.repaint();
 	}
     }
 }

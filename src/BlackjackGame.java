@@ -31,8 +31,9 @@ public class BlackjackGame
 	    player.drawHand( deck.drawCard(), deck.drawCard() );
 	    dealer.drawHand( deck.drawCard(), deck.drawCard() );
 
-
+	    handDealt = true;
 	}
+
     }
 
     //------------------------------------------------------------------------
@@ -43,6 +44,7 @@ public class BlackjackGame
 	{
 	    dealer.hit( deck.drawCard() );
 	}
+	handDealt = false;
     }
 
     //------------------------------------------------------------------------
@@ -62,5 +64,5 @@ public class BlackjackGame
 
 	return message;
     }
-
+    //------------------------------------------------------------------------
 }

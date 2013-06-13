@@ -11,7 +11,7 @@ public class BlackjackDriver
 {
     public static void main(String[] args)
     {
-
+	//testGame();
 	BlackjackGUI test = new BlackjackGUI();
     }
 
@@ -31,7 +31,7 @@ public class BlackjackDriver
 	    {
 		test.playerHit();
 	    }
-	    if (choice == 2 || test.player.bustStatus)
+	    if (choice == 2 || test.player.bustStatus == true)
 	    {
 		test.dealerHit();
 		JOptionPane.showMessageDialog(null, test);
