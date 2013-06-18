@@ -15,6 +15,10 @@ public class BlackjackGUI extends JFrame
     private JButton stayButton = new JButton("Stay");
     private JButton splitButton= new JButton("Split");
 
+    // Dimensions of screen
+    private int screenWidth;
+    private int screenHeight;
+
     // Listener for buttons
     private buttonListener listener = new buttonListener();
 
@@ -36,16 +40,22 @@ public class BlackjackGUI extends JFrame
 	addComponentsToWindow();
     }
     //------------------------------------------------------------------------
+    // Adjusts size, title, close operation, and layout type of GUI.
     private void setWindowSettings()
     {
-	// Gets current screen size and sizes window accordingly
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-
-	window.setSize(1000,700);
+	getWindowSize();
+	window.setSize(screenWidth,screenHeight-36);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setTitle("Blackjack");
 	window.setLayout( new BorderLayout() );
+    }
+    //------------------------------------------------------------------------
+    // Gets current screen size and stores as integer values.
+    private void getWindowSize()
+    {
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	screenHeight = screenSize.height;
+	screenWidth  = screenSize.width;
     }
     //------------------------------------------------------------------------
     private void setButtonSettings()
@@ -78,17 +88,19 @@ public class BlackjackGUI extends JFrame
     // and the others are not.
     private void checkButtonStatus()
     {
-	if ( cardArea.game.getHandDealt() && !game.player.getBustStatus() )
-	{
-	    dealButton.setEnabled(false);
-	    hitButton.setEnabled(true);
-	    stayButton.setEnabled(true);
-	}
-	else // If hand is not dealt
+	if ( !cardArea.game.getHandDealt() || game.player.getBustStatus() )
 	{
 	    dealButton.setEnabled(true);
 	    hitButton.setEnabled(false);
 	    stayButton.setEnabled(false);
+	    
+	    
+	}
+	else // If hand is not dealt
+	{
+	    dealButton.setEnabled(false);
+	    hitButton.setEnabled(true);
+	    stayButton.setEnabled(true);
 	}
     }
     //------------------------------------------------------------------------

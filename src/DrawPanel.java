@@ -100,5 +100,11 @@ public class DrawPanel extends JPanel
 	displayCardImage(g, game.dealer.hand[1], 450, 50);
 	displayCardImage(g, null, 530, 50);
     }
+    //------------------------------------------------------------------------
+    // Draws the value of the player's hand to the screen.
+    public void displayMessage()
+    {
+	
+    }
 
 }
