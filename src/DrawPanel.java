@@ -9,6 +9,7 @@ public class DrawPanel extends JPanel
     private Image cardImage;  // Image containing all 52 cards
     public Graphics g;
     public BlackjackGame game = new BlackjackGame();
+    private boolean initialHand = true;
     //------------------------------------------------------------------------
     // Default constructor
     public DrawPanel()
@@ -42,11 +43,15 @@ public class DrawPanel extends JPanel
     // not yet chosen to stay, the dealer's second card is flipped over.
     private void displayHands(Graphics g)
     {
-	displayPlayerHand(g, game.getPlayerHand());
-	if (game.getHandDealt() && !game.getPlayerStay() ){
-		displayDealerHiddenHand(g, game.getDealerHand());}
-	else{
-	    displayDealerHand(g, game.getDealerHand());}
+	if (initialHand == false)
+	{
+	    displayPlayerHand(g, game.getPlayerHand());
+	    if (game.getHandDealt() && !game.getPlayerStay() ){
+		    displayDealerHiddenHand(g, game.getDealerHand());}
+	    else{
+		displayDealerHand(g, game.getDealerHand());}
+	}
+	initialHand = false;
     }
     //------------------------------------------------------------------------
     /*
@@ -96,7 +101,7 @@ public class DrawPanel extends JPanel
     //------------------------------------------------------------------------
     private void displayPlayerHandAmount(Graphics g, int amount)
     {
-	g.drawString("" + amount, 400, 470);
+	g.drawString("" + amount, 400, 450);
     }
     //------------------------------------------------------------------------
     public void displayDealerHand(Graphics g, Hand dealer)
@@ -119,6 +124,7 @@ public class DrawPanel extends JPanel
     {
 	displayCardImage(g, dealer.hand[0], 450, 50);
 	displayCardImage(g, null, 530, 50);
+	displayDealerHandAmount(g, dealer.hand[0].getValue() );
     }
     //------------------------------------------------------------------------
     // Draws the value of the player's hand to the screen.
