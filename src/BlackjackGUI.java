@@ -44,7 +44,7 @@ public class BlackjackGUI extends JFrame
     private void setWindowSettings()
     {
 	getWindowSize();
-	window.setSize(screenWidth,screenHeight-36);
+	window.setSize(screenWidth,screenHeight);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setTitle("Blackjack");
 	window.setLayout( new BorderLayout() );
@@ -54,15 +54,13 @@ public class BlackjackGUI extends JFrame
     private void getWindowSize()
     {
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	screenHeight = screenSize.height;
+	screenHeight = screenSize.height - 37; // Subtracts 37 for Windows taskbar
 	screenWidth  = screenSize.width;
     }
     //------------------------------------------------------------------------
     private void setButtonSettings()
     {
-	hitButton.setEnabled(false);
-	stayButton.setEnabled(false);
-	splitButton.setEnabled(false);
+	disableButtons();
 
 	dealButton.addActionListener(listener);
 	hitButton.addActionListener(listener);
@@ -74,6 +72,15 @@ public class BlackjackGUI extends JFrame
 	buttonArea.add(stayButton);
 	buttonArea.add(splitButton);
     }
+    //------------------------------------------------------------------------
+    // Disables all buttons of GUI
+    private void disableButtons()
+    {
+	hitButton.setEnabled(false);
+	stayButton.setEnabled(false);
+	splitButton.setEnabled(false);
+    }
+
     //------------------------------------------------------------------------
     private void addComponentsToWindow()
     {
@@ -88,13 +95,11 @@ public class BlackjackGUI extends JFrame
     // and the others are not.
     private void checkButtonStatus()
     {
-	if ( !cardArea.game.getHandDealt() || game.player.getBustStatus() )
+	if ( !cardArea.game.getHandDealt() || game.getPlayerHand().getBustStatus() )
 	{
 	    dealButton.setEnabled(true);
 	    hitButton.setEnabled(false);
 	    stayButton.setEnabled(false);
-	    
-	    
 	}
 	else // If hand is not dealt
 	{

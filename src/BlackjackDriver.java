@@ -31,7 +31,7 @@ public class BlackjackDriver
 	    {
 		test.playerHit();
 	    }
-	    if (choice == 2 || test.player.bustStatus == true)
+	    if (choice == 2 || test.getPlayerHand().bustStatus == true)
 	    {
 		test.dealerHit();
 		JOptionPane.showMessageDialog(null, test);

@@ -35,11 +35,18 @@ public class DrawPanel extends JPanel
 	if (cardImage == null){
 	    g.drawString("CARD IMAGE COULD NOT BE FOUND", 100, 100);}
 
-	displayPlayerHand(g);
+	displayHands(g);
+    }
+    //------------------------------------------------------------------------
+    // Displays hands to screen. If the hand is in progress and the player has
+    // not yet chosen to stay, the dealer's second card is flipped over.
+    private void displayHands(Graphics g)
+    {
+	displayPlayerHand(g, game.getPlayerHand());
 	if (game.getHandDealt() && !game.getPlayerStay() ){
-		displayDealerHiddenHand(g);}
+		displayDealerHiddenHand(g, game.getDealerHand());}
 	else{
-	    displayDealerHand(g);}
+	    displayDealerHand(g, game.getDealerHand());}
     }
     //------------------------------------------------------------------------
     /*
@@ -75,29 +82,42 @@ public class DrawPanel extends JPanel
          g.drawImage(cardImage,x,y,x+79,y+123,cx,cy,cx+79,cy+123,this);
       }
     //------------------------------------------------------------------------
-    // Receives player's hand as paramter and displays card images on the bottom
+    // Receives player's hand as parameter and displays card images on the bottom
     // portion of the panel.
-    public void displayPlayerHand(Graphics g)
+    public void displayPlayerHand(Graphics g, Hand player)
     {
-	for (int i = 0; i < game.player.getNumCards(); i++)
+	for (int i = 0; i < player.getNumCards(); i++)
 	{
-	    displayCardImage(g, game.player.hand[i], (80*i) + 450, 450);
+	    displayCardImage(g, player.hand[i], (80*i) + 450, 450);
 	}
+
+	displayPlayerHandAmount(g, player.getHandValue() );
     }
     //------------------------------------------------------------------------
-    public void displayDealerHand(Graphics g)
+    private void displayPlayerHandAmount(Graphics g, int amount)
     {
-	for (int i = 0; i < game.dealer.getNumCards(); i++)
+	g.drawString("" + amount, 400, 470);
+    }
+    //------------------------------------------------------------------------
+    public void displayDealerHand(Graphics g, Hand dealer)
+    {
+	for (int i = 0; i < dealer.getNumCards(); i++)
 	{
-	    displayCardImage(g, game.dealer.hand[i], (80*i) + 450, 50);
+	    displayCardImage(g, dealer.hand[i], (80*i) + 450, 50);
 	}
+	displayDealerHandAmount(g, dealer.getHandValue() );
+    }
+    //------------------------------------------------------------------------
+    private void displayDealerHandAmount(Graphics g, int amount)
+    {
+	g.drawString("" + amount, 400, 50);
     }
     //------------------------------------------------------------------------
     // For initial hand. Player can only see one the first card in the dealer's
     // hand. The other card is flipped over.
-    public void displayDealerHiddenHand(Graphics g)
+    public void displayDealerHiddenHand(Graphics g, Hand dealer)
     {
-	displayCardImage(g, game.dealer.hand[1], 450, 50);
+	displayCardImage(g, dealer.hand[0], 450, 50);
 	displayCardImage(g, null, 530, 50);
     }
     //------------------------------------------------------------------------

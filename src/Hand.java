@@ -7,7 +7,7 @@ public class Hand
 {
     //------------------------------------------------------------------------
     // Data members:
-    public Card[] hand;  // Player cards
+    protected Card[] hand;  // Player cards
     protected int handValue;       // Numeric value of hand
     protected int numCards;        // Number of cards in hand
     protected boolean bustStatus;  // If true, hand is over 21 and is a bust
@@ -141,5 +141,9 @@ public class Hand
 	return numCards;
     }
     //------------------------------------------------------------------------
+    public int getHandValue()
+    {
+	return handValue;
+    }
 
 }// End BlackjackHand class
