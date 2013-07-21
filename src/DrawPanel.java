@@ -10,12 +10,22 @@ public class DrawPanel extends JPanel
     public Graphics g;
     public BlackjackGame game = new BlackjackGame();
     private boolean initialHand = true;
+    int windowHeight, windowWidth;
     //------------------------------------------------------------------------
     // Default constructor
     public DrawPanel()
     {
 	setBackground(Color.GREEN);
 	loadImage();
+    }
+    //------------------------------------------------------------------------
+    // Parameterized constructor. Accepts window height and width as parameters
+    public DrawPanel( int width, int height )
+    {
+	setBackground(Color.GREEN);
+	loadImage();
+	windowHeight = height;
+	windowWidth  = width;
     }
     //------------------------------------------------------------------------
     // Retreives image of all 52 cards from memory. Image must be present in
@@ -93,10 +103,17 @@ public class DrawPanel extends JPanel
     {
 	for (int i = 0; i < player.getNumCards(); i++)
 	{
-	    displayCardImage(g, player.hand[i], (80*i) + 450, 450);
+	    displayCardImage(g, player.hand[i], (80*i) + getXValue( player.getNumCards() ), 450);
 	}
 
-	displayPlayerHandAmount(g, player.getHandValue() );
+	displayPlayerHandAmount( g, player.getHandValue() );
+    }
+    //------------------------------------------------------------------------
+    // Returns X-value of leftmost card for the given hand to center the images
+    // on the screen given the number of cards and the size of the screen
+    private int getXValue(int numCards)
+    {
+	return (windowWidth/2) - (numCards * 40);
     }
     //------------------------------------------------------------------------
     private void displayPlayerHandAmount(Graphics g, int amount)
@@ -108,7 +125,7 @@ public class DrawPanel extends JPanel
     {
 	for (int i = 0; i < dealer.getNumCards(); i++)
 	{
-	    displayCardImage(g, dealer.hand[i], (80*i) + 450, 50);
+	    displayCardImage(g, dealer.hand[i], (80*i) + getXValue(dealer.getNumCards()), 50);
 	}
 	displayDealerHandAmount(g, dealer.getHandValue() );
     }
@@ -122,8 +139,8 @@ public class DrawPanel extends JPanel
     // hand. The other card is flipped over.
     public void displayDealerHiddenHand(Graphics g, Hand dealer)
     {
-	displayCardImage(g, dealer.hand[0], 450, 50);
-	displayCardImage(g, null, 530, 50);
+	displayCardImage(g, dealer.hand[0], getXValue(2), 50);
+	displayCardImage(g, null, getXValue(2) + 80, 50);
 	displayDealerHandAmount(g, dealer.hand[0].getValue() );
     }
     //------------------------------------------------------------------------

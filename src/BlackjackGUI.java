@@ -26,7 +26,7 @@ public class BlackjackGUI extends JFrame
     BlackjackGame game = new BlackjackGame();
 
     // Panels for card graphics
-    DrawPanel cardArea   = new DrawPanel();
+    DrawPanel cardArea;   //= new DrawPanel(screenWidth,screenHeight);
     JPanel    buttonArea = new JPanel();
 
     // Window to diplay rest of components
@@ -48,6 +48,7 @@ public class BlackjackGUI extends JFrame
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.setTitle("Blackjack");
 	window.setLayout( new BorderLayout() );
+	cardArea = new DrawPanel(screenWidth,screenHeight);
     }
     //------------------------------------------------------------------------
     // Gets current screen size and stores as integer values.
