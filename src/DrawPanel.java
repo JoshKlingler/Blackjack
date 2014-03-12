@@ -61,7 +61,17 @@ public class DrawPanel extends JPanel
 	    else{
 		displayDealerHand(g, game.getDealerHand());}
 	}
+	else
+	{
+	    displayInitialScreen(g);
+	}
 	initialHand = false;
+    }
+    //------------------------------------------------------------------------
+    private void displayInitialScreen(Graphics g)
+    {
+	g.setFont(new Font("SanSerif", Font.BOLD, windowWidth/21) );
+	g.drawString("Blackjack", windowWidth/3, windowHeight/3);
     }
     //------------------------------------------------------------------------
     /*
@@ -118,7 +128,7 @@ public class DrawPanel extends JPanel
     //------------------------------------------------------------------------
     private void displayPlayerHandAmount(Graphics g, int amount)
     {
-	g.drawString("" + amount, 400, 450);
+	g.drawString("" + amount, windowWidth/2, 440);
     }
     //------------------------------------------------------------------------
     public void displayDealerHand(Graphics g, Hand dealer)
@@ -132,7 +142,7 @@ public class DrawPanel extends JPanel
     //------------------------------------------------------------------------
     private void displayDealerHandAmount(Graphics g, int amount)
     {
-	g.drawString("" + amount, 400, 50);
+	g.drawString("" + amount, windowWidth/2, 40);
     }
     //------------------------------------------------------------------------
     // For initial hand. Player can only see one the first card in the dealer's
@@ -144,10 +154,6 @@ public class DrawPanel extends JPanel
 	displayDealerHandAmount(g, dealer.hand[0].getValue() );
     }
     //------------------------------------------------------------------------
-    // Draws the value of the player's hand to the screen.
-    public void displayMessage()
-    {
-	
-    }
+
 
 }

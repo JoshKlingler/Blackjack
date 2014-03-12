@@ -6,8 +6,8 @@ public class BlackjackGame
 {
     //------------------------------------------------------------------------
     // Data members:
-    private DealerHand dealer;   // Dealer's hand
-    private Hand player;         // Player's hand
+    private DealerHand dealer;  // Dealer's hand
+    private Hand player;        // Player's hand
     private Deck deck;          // Deck of cards
     private boolean handDealt;  // If true, hand is in progress
     private boolean playerStay; // If true, player has chosen to stay
