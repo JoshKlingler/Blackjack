@@ -1,7 +1,7 @@
-/**
- * This class stores a card value
- * @author Josh
- */
+//********************************* Card ***************************************
+//* This class stores the attributes of a playing card. Attributes include the *
+//* numeric value, the suit, and written value.                                *
+//******************************************************************************
 public class Card
 {
     // Enum for suit of card

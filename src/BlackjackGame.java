@@ -1,7 +1,7 @@
-/**
- * This class runs a game of Blackjack.
- * @author Josh
- */
+//***************************** BlackjackGame **********************************
+//* This class runs the behind the scenes portion of a game of blackjack.      *
+//******************************************************************************
+
 public class BlackjackGame
 {
     //------------------------------------------------------------------------

@@ -1,8 +1,8 @@
-/**
- * This class contains general methods and data members that will be inherited
- * by the DealerHand and PlayerHand classes.
- * @author Josh
- */
+//********************************** Hand **************************************
+//* This class contains general methods and data members that will be inherited*
+//* by the DealerHand and PlayerHand classes.                                  *
+//* @author Josh                                                               *
+//******************************************************************************
 public class Hand
 {
     //------------------------------------------------------------------------

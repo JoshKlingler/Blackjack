@@ -1,10 +1,11 @@
+//*********************************** Deck *************************************
+//* This class simulates a deck of cards and can shuffle, draw, etc.           *
+//* @author Josh                                                               *
+//******************************************************************************
+
 import java.util.Random;
 import javax.swing.JOptionPane;
 
-/**
- * This class simulates a deck of cards and can shuffle, draw, etc.
- * @author Josh
- */
 public class Deck
 {
     // Constant for number of cards in deck

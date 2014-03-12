@@ -96,6 +96,7 @@ public class BlackjackGUI extends JFrame
     // and the others are not.
     private void checkButtonStatus()
     {
+	System.out.println(game.getPlayerHand().getBustStatus());
 	if ( !cardArea.game.getHandDealt() || game.getPlayerHand().getBustStatus() )
 	{
 	    dealButton.setEnabled(true);
