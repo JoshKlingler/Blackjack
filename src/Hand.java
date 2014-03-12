@@ -103,22 +103,17 @@ public class Hand
 	// be worth 1 instead of 11.
 	if (handValue > 21)
 	{
-	    for (int i = 0; i < numCards; i++) // Traverse hand
+	    bustStatus = true;
+	    for (int i = 0; i < numCards; i++) // Traverse hand to look for aces
 	    {
-		if (hand[i].getValue() == 1 && handValue > 21)   // Check if ace
+		if (hand[i].getValue() == 1 && handValue > 21)   // Check for aces
 		{
 		    handValue -= 10;           // Set ace to 1 instead of 11
+		    bustStatus = false;        // Not a bust anymore
 		}
 	    }
-
-	    if (handValue > 21) // If hand is still over 21 after checking for aces, it is a bust
-	    {
-		bustStatus = true;
-	    }
 	}
-
-    }// End findHandValue method
-
+    }
     //------------------------------------------------------------------------
     // Writes suit/value of cards and total hand value
     public String toString()
@@ -145,5 +140,4 @@ public class Hand
     {
 	return handValue;
     }
-
-}// End BlackjackHand class
+}

@@ -26,7 +26,7 @@ public class BlackjackGUI extends JFrame
     BlackjackGame game = new BlackjackGame();
 
     // Panels for card graphics
-    DrawPanel cardArea;   //= new DrawPanel(screenWidth,screenHeight);
+    DrawPanel cardArea;   
     JPanel    buttonArea = new JPanel();
 
     // Window to diplay rest of components
@@ -96,8 +96,11 @@ public class BlackjackGUI extends JFrame
     // and the others are not.
     private void checkButtonStatus()
     {
-	System.out.println(game.getPlayerHand().getBustStatus());
-	if ( !cardArea.game.getHandDealt() || game.getPlayerHand().getBustStatus() )
+	System.out.println("Hand value: " + cardArea.game.getHandDealtStatus());
+	System.out.println("Buststatus: " + cardArea.game.getPlayerHand().getBustStatus() + "\n");
+
+	// If hand is not in progress
+	if ( !cardArea.game.getHandDealtStatus() || cardArea.game.getPlayerHand().getBustStatus() )
 	{
 	    dealButton.setEnabled(true);
 	    hitButton.setEnabled(false);

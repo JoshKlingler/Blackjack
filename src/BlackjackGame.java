@@ -9,7 +9,7 @@ public class BlackjackGame
     private DealerHand dealer;  // Dealer's hand
     private Hand player;        // Player's hand
     private Deck deck;          // Deck of cards
-    private boolean handDealt;  // If true, hand is in progress
+    private boolean handDealtStatus;  // If true, hand is in progress
     private boolean playerStay; // If true, player has chosen to stay
 
     //------------------------------------------------------------------------
@@ -19,30 +19,30 @@ public class BlackjackGame
 	dealer = new DealerHand();
 	player = new Hand();
 	deck   = new Deck();
-	handDealt = false;
+	handDealtStatus = false;
 	playerStay = false;
     }
     //------------------------------------------------------------------------
     // Deals two cards to the dealer and the player.
     public void dealCards()
     {
-	if (!handDealt)
+	if (!handDealtStatus)
 	{
 	    deck.GenerateDeck();  // Reshuffles deck for every hand
 
 	    player.drawHand( deck.drawCard(), deck.drawCard() );
 	    dealer.drawHand( deck.drawCard(), deck.drawCard() );
 
-	    handDealt = true;
+	    handDealtStatus = true;
 	    playerStay = false;
 	}
 
     }
     //------------------------------------------------------------------------
-    // Returns status of handDealt
-    public boolean getHandDealt()
+    // Returns status of handDealtStatus
+    public boolean getHandDealtStatus()
     {
-	return handDealt;
+	return handDealtStatus;
     }
     //------------------------------------------------------------------------
     // Returns player hand
@@ -75,7 +75,7 @@ public class BlackjackGame
 	{
 	    dealer.hit( deck.drawCard() );
 	}
-	handDealt = false;
+	handDealtStatus = false;
     }
 
     //------------------------------------------------------------------------
@@ -83,6 +83,9 @@ public class BlackjackGame
     public void playerHit()
     {
 	player.hit( deck.drawCard() );
+	if(player.getBustStatus()){
+	    dealerHit();
+	}
     }
 
     //------------------------------------------------------------------------

@@ -56,7 +56,7 @@ public class DrawPanel extends JPanel
 	if (initialHand == false)
 	{
 	    displayPlayerHand(g, game.getPlayerHand());
-	    if (game.getHandDealt() && !game.getPlayerStay() ){
+	    if (game.getHandDealtStatus() && !game.getPlayerStay() ){
 		    displayDealerHiddenHand(g, game.getDealerHand());}
 	    else{
 		displayDealerHand(g, game.getDealerHand());}
